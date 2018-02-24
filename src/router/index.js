@@ -10,6 +10,24 @@ export default new Router({
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
-    }
+    }/*,
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: HelloWorld
+    }*//*,
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: HelloWorld
+    }*//*,
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: HelloWorld
+    }*/
   ]
 })
+
+// https://medium.com/codingthesmartway-com-blog/vue-js-routing-with-vue-router-4c428fabb078
+// https://router.vuejs.org/en/
