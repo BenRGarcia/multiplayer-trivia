@@ -1,24 +1,35 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div id="app" class="container-fluid">
+
+    <!-- Page Title -->
+    <div class="row">
+      <div class="col">
+        <PageTitle/>
+      </div>
+    </div>
+
+    <!-- Page Contents -->
+    <div class="row">
+      <div class="col">
+        <router-view/>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
+import PageTitle from './components/PageTitle'
 import trivia from './assets/javascript/trivia.js'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    PageTitle
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
