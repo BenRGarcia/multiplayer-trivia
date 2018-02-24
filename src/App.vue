@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import trivia from './assets/javascript/trivia.js'
 export default {
   name: 'App'
 }
