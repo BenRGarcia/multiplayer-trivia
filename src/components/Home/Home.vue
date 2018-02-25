@@ -1,15 +1,17 @@
 <template>
-  <!-- Page layout for home page -->
-  <div>
-    <h1>Home Page</h1>
-    <router-link to="/play">
-      PLAY!
-    </router-link>
-    
-    <PlayerName/>
-    <LeaderBoard/>
-  </div>
-  
+    <div class="row">
+
+      <!-- 'Player Name' input area -->
+      <div class="col-12">
+        <PlayerName/>
+      </div>
+
+      <!-- Leader -->
+      <div class="col-12">
+        <LeaderBoard/>
+      </div>
+
+    </div>
 </template>
 
 <script>
