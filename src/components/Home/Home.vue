@@ -2,12 +2,12 @@
     <div class="row">
 
       <!-- 'Player Name' input area -->
-      <div class="col-12">
+      <div class="col-12 mt-3 mb-3">
         <PlayerName/>
       </div>
 
       <!-- Leader -->
-      <div class="col-12">
+      <div class="col-12 mt-3 mb-3">
         <LeaderBoard/>
       </div>
 
