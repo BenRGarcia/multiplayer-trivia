@@ -7,6 +7,7 @@ import Play from '@/components/Play/Play'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     { // Redirect unknown paths to home
       path: '*',
