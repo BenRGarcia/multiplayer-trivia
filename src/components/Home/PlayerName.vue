@@ -1,25 +1,29 @@
 <template>
-  <div class="row mb-3">
-  <form class="form-signin col-4 offset-4">
-    <div class="text-center mb-4">
-      <h3 class="h4 mb-3 font-weight-normal">Choose your player name to play!</h3>
-    </div>
-
-    <div class="form-label-group mb-2">
-      <input type="text" id="inputName" class="form-control" placeholder="Player Name" required="" autofocus="">
-    </div>
-
-    <button class="btn btn-primary">SUBMIT</button>
-  
-  </form>
-</div>
+  <div class="row">
+    <form :class="formClasses">
+      <div class="form-group">
+        <label>{{ inputLabel }}</label>
+        <input type="text" class="form-control" :placeholder="inputPlaceholder">
+      </div>
+      <button class="btn btn-primary">{{ buttonText }}</button>
+    </form>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      /* ... */
+      formClasses: [
+        "col-10", "offset-1",      // xs screens
+        "col-sm-8", "offset-sm-2", // sm screens
+        "col-md-6", "offset-md-3", // md screens
+        "col-lg-4", "offset-lg-4",  // lg screens
+        "border", "rounded", "pt-1", "pb-1"
+      ],
+      inputLabel: "Choose Your Trivia Name",
+      inputPlaceholder: "ex. QuizlyBear88",
+      buttonText: "Play Trivia!"
     }
   }
 }
