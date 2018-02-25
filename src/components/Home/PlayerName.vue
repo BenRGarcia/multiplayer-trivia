@@ -5,7 +5,7 @@
         <label>{{ inputLabel }}</label>
         <input v-model.trim="playerName" class="form-control" :placeholder="inputPlaceholder">
       </div>
-      <button @click="createPlayer" class="btn btn-primary">{{ buttonText }}</button>
+      <button @submit.prevent="createPlayer" class="btn btn-primary">{{ buttonText }}</button>
     </form>
   </div>
 </template>
