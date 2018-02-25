@@ -2,18 +2,11 @@
   <div>
 
     <!-- 'View Source Code' link -->
-    <a 
-      :href="url"
-      target="_blank" 
-    >
-      {{ linkText }}
-    </a>
+    <a :href="url" target="_blank">{{ linkText }}</a>
 
     <!-- Page Title -->
     <router-link to="/home">
-      <h1>
-        {{ headingText }}
-      </h1>
+      <h1 :class="headingClasses">{{ headingText }}</h1>
     </router-link>
 
   </div>
@@ -25,7 +18,8 @@ export default {
     return {
       url: "https://github.com/BenRGarcia/multiplayer-trivia",
       linkText: "View Source Code",
-      headingText: "TRIVIA"
+      headingText: "TRIVIA",
+      headingClasses: ["display-2"]
     }
   }
 }
