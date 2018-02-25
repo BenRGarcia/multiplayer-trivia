@@ -1,15 +1,21 @@
 <template>
-  <!-- Page layout for home page -->
   <div>
+
+    <!-- 'View Source Code' link -->
     <a 
       :href="url"
       target="_blank" 
     >
       {{ linkText }}
     </a>
-    <h1>
-      {{ headingText }}
-    </h1>
+
+    <!-- Page Title -->
+    <router-link to="/home">
+      <h1>
+        {{ headingText }}
+      </h1>
+    </router-link>
+
   </div>
 </template>
 
@@ -28,5 +34,11 @@ export default {
 <style scoped>
 a:hover {
   text-decoration: none;
+}
+h1 {
+  color: black;
+}
+h1:hover {
+  color: black;
 }
 </style>
