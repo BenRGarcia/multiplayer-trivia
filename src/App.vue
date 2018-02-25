@@ -15,6 +15,13 @@
       </div>
     </div>
 
+    <!-- Dummy footer for navigation's sake -->
+    <footer class="fixed-bottom" style="border: 2px solid red;">
+      <router-link to="/home">HOME </router-link>
+      |
+      <router-link to="/play"> PLAY</router-link>
+    </footer>
+
   </div>
 </template>
 
