@@ -12,12 +12,12 @@ export default new Router({
       path: '*',
       redirect: '/home'
     },
-    { // Home page, contains sign-in/sign-up, leaderboard
+    { // Home page
       path: '/home',
       name: 'Home',
       component: Home
     },
-    { // Game page, for authenticated users
+    { // Game page
       path: '/play',
       name: 'Play',
       component: Play
@@ -30,8 +30,6 @@ export default new Router({
 
 /*
 Views list:
-
 1) Home   - https://benrgarcia.github.io/multiplayer-trivia/home
-
-3) Game   - https://benrgarcia.github.io/multiplayer-trivia/play
+2) Play   - https://benrgarcia.github.io/multiplayer-trivia/play
 */
