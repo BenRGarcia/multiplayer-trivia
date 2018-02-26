@@ -1,9 +1,7 @@
 <template>
     <div class="row">
 
-      <!-- 'Player Name' input area -->
       <div class="col-12 mt-2 mb-2">
-        <!-- <PlayerName/> -->
         <router-link to="/play">
           <button class="btn btn-primary">
             PLAY!
@@ -11,7 +9,7 @@
         </router-link>
       </div>
 
-      <!-- Leader -->
+      <!-- LeaderBoard -->
       <div class="col-12 mt-3 mb-3">
         <LeaderBoard/>
       </div>
@@ -20,7 +18,6 @@
 </template>
 
 <script>
-// import PlayerName from './PlayerName'
 import LeaderBoard from './LeaderBoard'
 
 export default {
@@ -30,8 +27,7 @@ export default {
     }
   },
   components: {
-    LeaderBoard/*,
-    PlayerName*/
+    LeaderBoard
   }
 }
 </script>
