@@ -12,4 +12,5 @@ body {
 
 .card {
   border: 5px solid #000;
+  overflow: scroll;
 }
