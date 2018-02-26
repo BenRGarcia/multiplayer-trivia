@@ -21,7 +21,7 @@ export default new Router({
     { // Game page
       path: '/play',
       name: 'Play',
-      components: Play,
+      component: Play,
       props: true
     }
   ]
