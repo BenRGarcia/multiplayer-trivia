@@ -15,12 +15,14 @@ export default new Router({
     { // Home page
       path: '/home',
       name: 'Home',
-      component: Home
+      component: Home,
+      props: true
     },
     { // Game page
       path: '/play',
       name: 'Play',
-      component: Play
+      components: Play,
+      props: true
     }
   ]
 })
@@ -29,7 +31,7 @@ export default new Router({
 // https://router.vuejs.org/en/
 
 /*
-Views list:
-1) Home   - https://benrgarcia.github.io/multiplayer-trivia/home
-2) Play   - https://benrgarcia.github.io/multiplayer-trivia/play
-*/
+ * Passing Props to route components
+ * https://router.vuejs.org/en/essentials/passing-props.html
+ * https://router.vuejs.org/en/advanced/data-fetching.html
+ */
