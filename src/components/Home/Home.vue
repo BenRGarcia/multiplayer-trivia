@@ -2,7 +2,7 @@
     <div class="row">
 
       <!-- 'Player Name' input area -->
-      <div class="col-12 mt-3 mb-3">
+      <div class="col-12 mt-2 mb-2">
         <!-- <PlayerName/> -->
         <router-link to="/play">
           <button class="btn btn-primary">

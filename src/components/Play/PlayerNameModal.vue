@@ -3,7 +3,7 @@
 
     <!-- Button trigger modal -->
     <button @click.prevent="autofocusModal" type="button" class="btn btn-primary mb-0" data-toggle="modal" data-target="#playerNameModal">
-      Click to Change Player Name
+      Change Player Name
     </button>
 
     <!-- Modal -->
@@ -41,7 +41,7 @@ export default {
   data() {
     return {
       isPlayerNameChosen: false,
-      playerName: ""
+      playerName: ''
     }
   },
   methods: {

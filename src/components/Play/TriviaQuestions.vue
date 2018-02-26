@@ -19,23 +19,16 @@
         <button type="button" :class="choiceClasses">cellphone</button>
       </div>
     </div>
-
-    <!-- Button to change Player Name -->
-    <div class="card-footer text-muted">
-      <PlayerNameModal/>
-    </div>
   </div>
 </template>
 
 <script>
 import TimeRemaining from './TimeRemaining'
 import Question from './question.vue'
-import PlayerNameModal from './PlayerNameModal'
 
 export default {
   components: {
     Question,
-    PlayerNameModal,
     TimeRemaining
   },
   data() {
@@ -44,8 +37,8 @@ export default {
       questionClasses: [
         "card-title",
         "col-12", 
-        "col-sm-10", "offset-sm-1", 
-        "col-md-8", "offset-md-2"
+        "col-md-10", "offset-md-1"/*, 
+        "col-md-8", "offset-md-2"*/
       ],
       // CSS classes for section of answer choices
       choicesClasses: [
@@ -102,7 +95,5 @@ ex. url: https://opentdb.com/api.php?amount=10&type=multiple
 </script>
 
 <style scoped>
-p {
-  text-align: left;
-}
+
 </style>

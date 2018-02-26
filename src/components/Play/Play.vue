@@ -10,11 +10,11 @@
     
     <div class="row">
       <!-- Stats -->
-      <div class="col-6">
+      <div class="col-12 col-md-5 mb-3">
         <PlayerStats/>
       </div>
       <!-- Chat -->
-      <div class="col-6">
+      <div class="col-12 col-md-7 mb-3">
         <ChatBox/>
       </div>
     </div>

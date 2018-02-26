@@ -1,14 +1,20 @@
 <template>
   <div>
+    <div class="row">
 
-    <!-- 'View Source Code' link -->
-    <a :href="url" target="_blank">{{ linkText }}</a>
+      <!-- 'View Source Code' link -->
+      <div class="col-12">
+        <a :href="url" target="_blank">{{ linkText }}</a>
+      </div>
 
-    <!-- Page Title -->
-    <router-link to="/home">
-      <h1 :class="headingClasses">{{ headingText }}</h1>
-    </router-link>
+      <!-- Page Title -->
+      <div class="col-12">
+        <router-link to="/home">
+          <span :class="headingClasses">{{ headingText }}</span>
+        </router-link>
+      </div>
 
+    </div>
   </div>
 </template>
 
@@ -19,7 +25,7 @@ export default {
       url: "https://github.com/BenRGarcia/multiplayer-trivia",
       linkText: "View Source Code",
       headingText: "TRIVIA",
-      headingClasses: ["display-3", "mb-0"]
+      headingClasses: ["display-3", "mb-0", "title"]
     }
   }
 }
@@ -29,10 +35,10 @@ export default {
 a:hover {
   text-decoration: none;
 }
-h1 {
+.title {
   color: black;
 }
-h1:hover {
+.title:hover {
   color: black;
 }
 </style>

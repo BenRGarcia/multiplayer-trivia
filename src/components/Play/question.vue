@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       // ...hardcoded for dev, will delete
-      question: "The words 'bungalow' and 'shampoo' originate from the languages of which country?",
+      question: "The word 'shampoo' originates from the languages of which country?",
     }
   }
 }
