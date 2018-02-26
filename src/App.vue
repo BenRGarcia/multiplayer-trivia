@@ -25,7 +25,9 @@ import trivia from './assets/javascript/trivia.js'
 export default {
   props: [
     // from firebase
-    /* "leaders" */
+    /* 
+    "leaders", "trivia", "playerStats", "timer"
+    */
   ],
   name: 'App',
   data() {
