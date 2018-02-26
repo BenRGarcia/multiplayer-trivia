@@ -2,8 +2,8 @@
   <div>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#playerNameModal">
-      Change Player Name
+    <button @click.prevent="autofocusModal" type="button" class="btn btn-primary mb-0" data-toggle="modal" data-target="#playerNameModal">
+      Click to Change Player Name
     </button>
 
     <!-- Modal -->
@@ -25,7 +25,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button @click="updatePlayerName" type="submit" class="btn btn-primary">Save</button>
+            <input type="submit" class="btn btn-primary">
           </div>
         </div>
       </div>
@@ -35,6 +35,8 @@
 </template>
 
 <script>
+// import modal from './modal'
+
 export default {
   data() {
     return {
@@ -43,13 +45,18 @@ export default {
     }
   },
   methods: {
+
+    autofocusModal() {
+      $('#playerNameModal').on('shown.bs.modal', function () {
+        $('#player-name').trigger('focus');
+      })
+    },
+
     updatePlayerName() {
       // Close modal
       $('#playerNameModal').modal('hide');
-      // Clear session storage
-      sessionStorage.clear();
       // Set playerName in session storage
-      sessionStorage.setItem("playerName", this.playerName);
+      localStorage.setItem("playerName", this.playerName);
       // Reset property to empty string
       this.playerName = "";
     }

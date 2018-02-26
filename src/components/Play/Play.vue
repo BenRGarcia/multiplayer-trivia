@@ -1,14 +1,24 @@
 <template>
   <div>
 
-    <!-- Page layout for game play -->
-    <div>
-      <PlayerNameModal/>
-      <TimeRemaining/>
-      <TriviaQuestions/>
-      <PlayerStats/>
-      <ChatBox/>
+    <!-- Bootstrap Card that contains Timer + Question + Answer Choices -->
+    <div class="row">
+      <div class="col">
+        <TriviaQuestions/>
+      </div>
     </div>
+    
+    <div class="row">
+      <!-- Stats -->
+      <div class="col-6">
+        <PlayerStats/>
+      </div>
+      <!-- Chat -->
+      <div class="col-6">
+        <ChatBox/>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -20,6 +30,10 @@ import ChatBox from './ChatBox'
 import PlayerNameModal from './PlayerNameModal'
 
 export default {
+  props: [
+    "timeRemaining", "question", 
+    "choices", "chat"
+  ],
   data() {
     return {
       /* ... */
@@ -36,5 +50,7 @@ export default {
 </script>
 
 <style scoped>
-
+.row {
+  margin-bottom: 1rem;
+}
 </style>

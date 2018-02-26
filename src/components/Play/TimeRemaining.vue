@@ -1,19 +1,28 @@
 <template>
-  <p>Seconds Remaining: <span>15</span></p>
+  <section>
+
+    <h4 class="timeRemaining">
+      Time Remaining: {{ timeRemaining }}
+    </h4>
+
+  </section>
 </template>
 
 <script>
 export default {
+  props: [
+    // "timeRemaining"
+  ],
   data() {
     return {
-      /* ... */
+      timeRemaining: "15"
     }
   }
 }
 </script>
 
 <style scoped>
-p {
-  text-align: left;
+.timeRemaining {
+  margin-bottom: 0;
 }
 </style>
