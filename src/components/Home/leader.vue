@@ -13,11 +13,11 @@
   </tr> -->
 
   <!-- Hard coded dummy content -->
-  <tr>
-    <th scope="row">1</th>
-    <td>Ben</td>
-    <td>47</td>
-  </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Ben</td>
+      <td>47</td>
+    </tr>
 
 </template>
 

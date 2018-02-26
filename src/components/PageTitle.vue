@@ -19,7 +19,7 @@ export default {
       url: "https://github.com/BenRGarcia/multiplayer-trivia",
       linkText: "View Source Code",
       headingText: "TRIVIA",
-      headingClasses: ["display-2"]
+      headingClasses: ["display-3", "mb-0"]
     }
   }
 }

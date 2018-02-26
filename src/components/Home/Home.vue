@@ -3,7 +3,12 @@
 
       <!-- 'Player Name' input area -->
       <div class="col-12 mt-3 mb-3">
-        <PlayerName/>
+        <!-- <PlayerName/> -->
+        <router-link to="/play">
+          <button class="btn btn-primary">
+            PLAY!
+          </button>
+        </router-link>
       </div>
 
       <!-- Leader -->
@@ -15,7 +20,7 @@
 </template>
 
 <script>
-import PlayerName from './PlayerName'
+// import PlayerName from './PlayerName'
 import LeaderBoard from './LeaderBoard'
 
 export default {
@@ -25,8 +30,8 @@ export default {
     }
   },
   components: {
-    LeaderBoard,
-    PlayerName
+    LeaderBoard/*,
+    PlayerName*/
   }
 }
 </script>
