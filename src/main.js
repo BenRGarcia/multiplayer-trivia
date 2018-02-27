@@ -38,6 +38,8 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var db = firebase.database();
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
