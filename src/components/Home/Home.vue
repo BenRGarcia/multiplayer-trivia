@@ -20,6 +20,7 @@
 <script>
 import LeaderBoard from './LeaderBoard'
 
+
 export default {
   data() {
     return {
@@ -28,6 +29,11 @@ export default {
   },
   components: {
     LeaderBoard
+  },
+  firebase: function() {
+    return {
+      // question: firebase.database().ref('/questionBank').val().data[0]
+    }
   }
 }
 </script>
