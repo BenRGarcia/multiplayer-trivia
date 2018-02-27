@@ -11,11 +11,11 @@
     <!-- Page Contents -->
     <div class="row">
       <div class="col">
-        <router-view/>
+        <router-view :players="players"/>
       </div>
     </div>
 
-    
+    <button @click="loadPlayers">1) loadPlayers()</button>
 
   </div>
 </template>
@@ -42,7 +42,8 @@ export default {
   name: 'App',
   data() {
     return {
-      // ...
+      question: {},
+      players: []
     }
   },
   components: {
@@ -51,6 +52,17 @@ export default {
   firebase: {
     playerData: db.ref("/playerData"),
     questionBank: db.ref("/questionBank/data")
+  },
+  methods: {
+    loadQuestionObj() {
+      // To load 1 question object from array in this.questionBank (or this.firebase.questionBank?)
+    },
+    loadPlayers() {
+      // To load players into this.players
+      for (let player of this.playerData) {
+        this.players.push(player);
+      }
+    }
   }
 }
 </script>

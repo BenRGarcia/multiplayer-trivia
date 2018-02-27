@@ -11,7 +11,7 @@
 
       <!-- LeaderBoard -->
       <div class="col-12 mt-3 mb-3">
-        <LeaderBoard/>
+        <LeaderBoard :players="players"/>
       </div>
 
     </div>
@@ -22,6 +22,9 @@ import LeaderBoard from './LeaderBoard'
 
 
 export default {
+  props: [
+    "players"
+  ],
   data() {
     return {
       /* ... */
@@ -29,11 +32,6 @@ export default {
   },
   components: {
     LeaderBoard
-  },
-  firebase: function() {
-    return {
-      // question: firebase.database().ref('/questionBank').val().data[0]
-    }
   }
 }
 </script>

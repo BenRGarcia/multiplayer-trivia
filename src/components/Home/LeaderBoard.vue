@@ -13,63 +13,13 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <leader v-for="(leader, index) in leaderboard" :key="index" :place="leader.place", :playerName="leader.name", :points="leader.points"/> -->
-              <!-- <leader/> -->
-              <tr>
-                <th scope="row">1</th>
-                <td>QuizlyBear88</td>
-                <td>38</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>J-hawn</td>
-                <td>37</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>OwlieOwlerson43</td>
-                <td>36</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>OllieOllieOxenfree</td>
-                <td>32</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Terry</td>
-                <td>31</td>
-              </tr>
-              <tr>
-                <th scope="row">6</th>
-                <td>P@t</td>
-                <td>28</td>
-              </tr>
-              <tr>
-                <th scope="row">7</th>
-                <td>J1m</td>
-                <td>26</td>
-              </tr>
-              <tr>
-                <th scope="row">8</th>
-                <td>J3ss3sgurl</td>
-                <td>24</td>
-              </tr>
-              <tr>
-                <th scope="row">9</th>
-                <td>TomNjerry</td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <th scope="row">10</th>
-                <td>TheDoctor</td>
-                <td>7</td>
-              </tr>
+              <leader v-for="(leader, index) in leaders" :key="index" :ranking="index" :playerName="leader.name" :points="leader.points"/>
             </tbody>
           </table>  
         </div>
       </div>
     </div>
+    <button @click="topPlayers">2) topPlayers()</button>
   </div>
 </template>
 
@@ -78,19 +28,44 @@ import leader from './leader'
 
 export default {
   props: [
-    // leaderboard
+    "players"
   ],
   components: {
     leader
   },
   data() {
     return {
+      leaders: [],
       leaderboardClasses: [
         "col-12",                   // xs screens
         "col-sm-10", "offset-sm-1", // sm screens
         "col-md-8", "offset-md-2",  // md screens
         "col-lg-6", "offset-lg-3"   // xl screens
       ]
+    }
+  },
+  methods: {
+    // return Top 10 players according to points to this.leaders
+    topPlayers() {
+      let newArray = []
+
+      for (let player of this.players) {
+
+        let leader = {};
+        leader.name = player.name;
+        leader.points = player.points;
+
+        newArray.push(leader);
+      }
+
+      let sortedArray = newArray.sort( (a, b) => b.points - a.points);
+      this.leaders = sortedArray;
+
+      if (sortedArray.length > 10) {
+        this.leaders = sortedArray.splice(11);
+      } else {
+        this.leaders = sortedArray;
+      }
     }
   }
 }
