@@ -27,17 +27,6 @@ Vue.config.productionTip = false
 // Initialize VueFire
 Vue.use(VueFire)
 
-// Initialize Firebase
-// var config = {
-//   apiKey: "AIzaSyBrQisbyt2TLTPns6DkbvJ5pKQStVvqmDo",
-//   authDomain: "multiplayer-trivia.firebaseapp.com",
-//   databaseURL: "https://multiplayer-trivia.firebaseio.com",
-//   projectId: "multiplayer-trivia",
-//   storageBucket: "multiplayer-trivia.appspot.com",
-//   messagingSenderId: "633175556093"
-// };
-// firebase.initializeApp(config);
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
