@@ -11,7 +11,7 @@
     <!-- Page Contents -->
     <div class="row">
       <div class="col">
-        <router-view :players="players"/>
+        <router-view :players="players" @addPlayer="addPlayer"/>
       </div>
     </div>
 
@@ -61,7 +61,7 @@ export default {
       // Store newPlayerKey in sessionstorage
       sessionStorage.setItem("playerKey", newPlayerKey);
 
-      // Create new object to send to db
+      // Create new object to post to db
       newPlayer = {};
       // Add key/value of newPlayerKey
       newPlayer['/playerData/' + newPlayerKey] =  {
@@ -69,7 +69,7 @@ export default {
                                                     points: 0
                                                   };
 
-      return playersRef.update(...);
+      return playersRef.update(newPlayer);
     }
   }
 }
