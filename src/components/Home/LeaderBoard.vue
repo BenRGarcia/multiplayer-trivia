@@ -53,11 +53,13 @@ export default {
   },
   computed: {
     leaders() {
+      // How many leaders to show on leaderboard
+      let leaderboardLimit = 10;
       // Sort players from highest points to lowest points
       let sortedArray = this.players.sort( (a,b) => b.points - a.points );
       // Only return (at most) the top 10 players
-      return sortedArray.length > 10 
-              ? sortedArray.splice(11)
+      return sortedArray.length > leaderboardLimit 
+              ? sortedArray.slice(0, leaderboardLimit)
               : sortedArray;
     }
   }
