@@ -15,7 +15,7 @@
           :players="players" 
           @addPlayer="addPlayer"
           :chat="chat"
-          @addNewMessage="addNewMessage"
+          @sendMessage="sendMessage"
         />
       </div>
     </div>
@@ -79,7 +79,7 @@ export default {
       return playersRef.update(newPlayer);
     },
     // Add new chat message to database
-    addNewMessage(message) {
+    sendMessage(message) {
       // Get firebase key for new message
       newMessageKey = chatRef.push().key;
 

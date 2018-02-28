@@ -1,35 +1,42 @@
 <template>
 <div class="card p-2">
   <div id="chat" class="card-body border border-secondary rounded">
+
     <message 
       v-for="(message, index) in chat" 
       :key="index"
       :name="message.name" 
       :message="message.message"
     />
+
   </div>
   <div class="card-footer">
-    <div class="input-group">
-      <input type="text" class="form-control">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Send</button>
-      </div>
-    </div>
+
+    <inputMessage 
+      @sendMessage="sendMessage"
+    />
+
   </div>
 </div>
 </template>
 
 <script>
 import message from './ChatBoxMessage'
+import inputMessage from './ChatBoxMessageInput'
 
 export default {
   props: [
     "chat"
   ],
   components: {
-    message
+    message,
+    inputMessage
   },
   methods: {
+    sendMessage(message) {
+      console.log(`Message received by parent, ChatBox: ${message}`);
+      this.$emit("sendMessage", message);
+    },
     scrollToBottom() {
       $('#chat').scrollTop( 1000 );
     }

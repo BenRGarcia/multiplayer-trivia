@@ -15,7 +15,7 @@
       </div>
       <!-- Chat -->
       <div class="col-12 col-md-7 mb-3">
-        <ChatBox :chat="chat"/>
+        <ChatBox @sendMessage="sendMessage" :chat="chat"/>
       </div>
     </div>
 
@@ -40,6 +40,11 @@ export default {
     PlayerStats,
     ChatBox,
     PlayerNameModal
+  },
+  methods: {
+    sendMessage(message) {
+      this.$emit("sendMessage", message);
+    }
   }
 }
 </script>
