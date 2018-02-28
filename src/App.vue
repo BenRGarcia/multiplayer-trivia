@@ -58,7 +58,7 @@ export default {
   firebase: {
     players: playersRef,
     questionBank: questionsRef,
-    chat: chatRef
+    chat: chatRef.limitToLast(10)
   },
   methods: {
     // Add playerName to database
