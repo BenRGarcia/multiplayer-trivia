@@ -40,9 +40,17 @@ export default {
       // Reset message input to empty
       this.newMessage = "";
 
-      return message.length <= this.maxChars
-        ? this.$emit("sendMessage", message)
-        : alert("Max character limit is 100 characters");
+      // Don't register messages unless player name is set
+      if (localStorage.getItem("playerName")) {
+        
+        return message.length <= this.maxChars
+          ? this.$emit("sendMessage", message)
+          : alert("Max character limit is 100 characters");
+
+      } else {
+        alert("You must create your player name before sending messages");
+        return null;
+      }
     }
   }
 }
