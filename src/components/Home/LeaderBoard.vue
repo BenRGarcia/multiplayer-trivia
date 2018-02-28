@@ -13,13 +13,20 @@
               </tr>
             </thead>
             <tbody>
-              <leader v-for="(leader, index) in leaders" :key="index" :ranking="index" :playerName="leader.name" :points="leader.points"/>
+
+              <leader 
+                v-for="(leader, index) in leaders" 
+                :key="index" 
+                :ranking="index" 
+                :playerName="leader.name" 
+                :points="leader.points"
+              />
+
             </tbody>
           </table>  
         </div>
       </div>
     </div>
-    <button @click="topPlayers">2) topPlayers()</button>
   </div>
 </template>
 
@@ -35,7 +42,7 @@ export default {
   },
   data() {
     return {
-      leaders: [],
+      // leaders: [],
       leaderboardClasses: [
         "col-12",                   // xs screens
         "col-sm-10", "offset-sm-1", // sm screens
@@ -44,27 +51,15 @@ export default {
       ]
     }
   },
-  methods: {
-    // return Top 10 players according to points to this.leaders
-    topPlayers() {
-      let newArray = []
-
-      for (let player of this.players) {
-
-        let leader = {};
-        leader.name = player.name;
-        leader.points = player.points;
-
-        newArray.push(leader);
-      }
-
-      let sortedArray = newArray.sort( (a, b) => b.points - a.points);
-      this.leaders = sortedArray;
-
+  computed: {
+    leaders: function() {
+      // Sort players from highest points to lowest points
+      let sortedArray = this.players.sort( (a,b) => b.points - a.points );
+      // Only return (at most) the top 10 players
       if (sortedArray.length > 10) {
-        this.leaders = sortedArray.splice(11);
+        return sortedArray.splice(11);
       } else {
-        this.leaders = sortedArray;
+        return sortedArray;
       }
     }
   }
