@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <button @click="loadPlayers">1) loadPlayers()</button>
+    <!-- <button @click="loadPlayers">1) loadPlayers()</button> -->
 
   </div>
 </template>
@@ -36,6 +36,8 @@ var config = {
 };
 firebase.initializeApp(config);
 var db = firebase.database();
+var playersRef = db.ref("/playerData");
+var questionsRef = db.ref("/questionBank/data");
 // end firebase
 
 export default {
@@ -43,26 +45,26 @@ export default {
   data() {
     return {
       question: {},
-      players: []
+      // players: []
     }
   },
   components: {
     PageTitle
   },
   firebase: {
-    playerData: db.ref("/playerData"),
-    questionBank: db.ref("/questionBank/data")
+    players: playersRef,
+    questionBank: questionsRef,
   },
   methods: {
     loadQuestionObj() {
       // To load 1 question object from array in this.questionBank (or this.firebase.questionBank?)
-    },
+    }/*,
     loadPlayers() {
       // To load players into this.players
       for (let player of this.playerData) {
         this.players.push(player);
       }
-    }
+    }*/
   }
 }
 </script>
