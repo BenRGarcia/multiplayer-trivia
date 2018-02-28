@@ -1,27 +1,16 @@
 <template>
 <div class="card p-2">
   <div id="chat" class="card-body border border-secondary rounded">
-    <p>QuizlyBear88: You're going down!</p>
-    <hr>
-    <p>Triviaddict76: No way! You're going down!</p>
-    <hr>
-    <p>QuizlyBear88: Not a chance! I'm a trivia champ!</p>
-    <hr>
-    <p>Triviaddict76: Well I'm beating you already, so there! Well I'm beating you already, so there!</p>
-    <hr>
-    <p>QuizlyBear88: How about them apples?!</p>
-    <hr>
-    <p>Triviaddict76: No way! You're going down!</p>
-    <hr>
-    <p>QuizlyBear88: Not a chance! I'm a trivia champ!</p>
-    <hr>
-    <p>Triviaddict76: Well I'm beating you already, so there! Well I'm beating you already, so there!</p>
-    <hr>
-    <p>QuizlyBear88: How about them apples?!</p>
+    <message 
+      v-for="(message, index) in chat" 
+      :key="index"
+      :name="message.name" 
+      :message="message.message"
+    />
   </div>
   <div class="card-footer">
     <div class="input-group">
-      <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <input type="text" class="form-control">
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="button">Send</button>
       </div>
@@ -31,15 +20,14 @@
 </template>
 
 <script>
-$(function() {
-  $('#chat').scrollTop( 1000 );
-});
+import message from './ChatBoxMessage'
 
 export default {
-  data() {
-    return {
-      /* ... */
-    }
+  props: [
+    "chat"
+  ],
+  components: {
+    message
   },
   methods: {
     scrollToBottom() {
@@ -60,9 +48,6 @@ export default {
 }
 div {
   text-align: left;
-}
-p {
-  /*margin-bottom: 0;*/
 }
 hr {
   margin: 0;
