@@ -42,30 +42,24 @@ export default {
   },
   data() {
     return {
-      // leaders: [],
+      // Bootstrap Grid
       leaderboardClasses: [
         "col-12",                   // xs screens
         "col-sm-10", "offset-sm-1", // sm screens
         "col-md-8", "offset-md-2",  // md screens
-        "col-lg-6", "offset-lg-3"   // xl screens
+        "col-lg-6", "offset-lg-3"   // lg screens
       ]
     }
   },
   computed: {
-    leaders: function() {
+    leaders() {
       // Sort players from highest points to lowest points
       let sortedArray = this.players.sort( (a,b) => b.points - a.points );
       // Only return (at most) the top 10 players
-      if (sortedArray.length > 10) {
-        return sortedArray.splice(11);
-      } else {
-        return sortedArray;
-      }
+      return sortedArray.length > 10 
+              ? sortedArray.splice(11)
+              : sortedArray;
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
