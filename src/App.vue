@@ -64,10 +64,10 @@ export default {
       // Create new object to post to db
       newPlayer = {};
       // Add key/value of newPlayerKey
-      newPlayer['/playerData/' + newPlayerKey] =  {
-                                                    name: name,
-                                                    points: 0
-                                                  };
+      newPlayer['/playerData/' + newPlayerKey] = {
+        name: name,
+        points: 0
+      };
 
       return playersRef.update(newPlayer);
     }
