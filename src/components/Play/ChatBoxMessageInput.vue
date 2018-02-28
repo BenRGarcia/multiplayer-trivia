@@ -4,7 +4,7 @@
 
       <input 
         v-model.trim="newMessage" 
-        placeholder="message" 
+        placeholder="input trivia taunts here" 
         type="text" 
         class="form-control"
       >
@@ -34,8 +34,6 @@ export default {
   },
   methods: {
     sendMessage() {
-      console.log(`'Send' was intiated with the message: ${this.newMessage}`);
-
       // Declare local variable
       let message = this.newMessage;
 
@@ -43,7 +41,7 @@ export default {
       this.newMessage = "";
 
      return message.length <= this.maxChars
-        ? $emit("sendMessage", message)
+        ? this.$emit("sendMessage", message)
         : alert("Max character limit is 100 characters");
     }
   }

@@ -81,13 +81,14 @@ export default {
     // Add new chat message to database
     sendMessage(message) {
       // Get firebase key for new message
-      newMessageKey = chatRef.push().key;
+      let newMessageKey = chatRef.push().key;
 
       // Get player name from session storage
-      let name = sessionStorage.getItem("playerName");
+      let name = localStorage.getItem("playerName");
+      console.log(`name is: ${name}`);
 
       // Create new object to post to db
-      newMessage = {};
+      let newMessage = {};
       // Add key/value of newMessageKey
       newMessage['/chat' + newMessageKey] = {
         name: name,

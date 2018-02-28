@@ -34,12 +34,15 @@ export default {
   },
   methods: {
     sendMessage(message) {
-      console.log(`Message received by parent, ChatBox: ${message}`);
       this.$emit("sendMessage", message);
     },
     scrollToBottom() {
       $('#chat').scrollTop( 1000 );
     }
+  },
+  updated: function () {
+    console.log(`updated was called`);
+    $('#chat').scrollTop( 1000 );
   }
 }
 </script>
