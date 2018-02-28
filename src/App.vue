@@ -64,15 +64,16 @@ export default {
     // Add playerName to database
     addPlayer(name) {
       // Get firebase key for new player
-      newPlayerKey = playersRef.push().key;
+      let newPlayerKey = playersRef.push().key;
 
-      // Store newPlayerKey in sessionStorage
-      sessionStorage.setItem("playerKey", newPlayerKey);
+      // Store newPlayerKey in localStorage
+      localStorage.setItem("playerKey", newPlayerKey);
+      localStorage.setItem("playerName", name);
 
       // Create new object to post to db
-      newPlayer = {};
+      let newPlayer = {};
       // Add key/value of newPlayerKey
-      newPlayer['/playerData/' + newPlayerKey] = {
+      newPlayer[newPlayerKey] = {
         name: name,
         points: 0
       };
@@ -89,7 +90,7 @@ export default {
       // Create new object to post to db
       let newMessage = {};
       // Add key/value of newMessageKey
-      newMessage['/chat' + newMessageKey] = {
+      newMessage[newMessageKey] = {
         name: name,
         message: message
       };
