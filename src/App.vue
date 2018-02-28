@@ -11,7 +11,10 @@
     <!-- Page Contents -->
     <div class="row">
       <div class="col">
-        <router-view :players="players" @addPlayer="addPlayer"/>
+        <router-view 
+          :players="players" 
+          @addPlayer="addPlayer"
+        />
       </div>
     </div>
 
@@ -35,6 +38,7 @@ var config = {
 // Initialize firebase
 firebase.initializeApp(config);
 // Create references to nodes for ease of use
+var db = firebase.database();
 var playersRef = db.ref("/playerData");
 var questionsRef = db.ref("/questionBank/data");
 
