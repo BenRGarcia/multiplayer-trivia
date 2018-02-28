@@ -15,7 +15,7 @@
       </div>
       <!-- Chat -->
       <div class="col-12 col-md-7 mb-3">
-        <ChatBox/>
+        <ChatBox :chat="chat"/>
       </div>
     </div>
 
@@ -34,11 +34,6 @@ export default {
     "timeRemaining", "question", 
     "choices", "chat"
   ],
-  data() {
-    return {
-      /* ... */
-    }
-  },
   components: {
     TimeRemaining,
     TriviaQuestions,
