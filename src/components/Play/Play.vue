@@ -11,7 +11,7 @@
     <div class="row">
       <!-- Stats -->
       <div class="col-12 col-md-5 mb-3">
-        <PlayerStats/>
+        <PlayerStats @addPlayer="addPlayer"/>
       </div>
       <!-- Chat -->
       <div class="col-12 col-md-7 mb-3">
@@ -44,6 +44,14 @@ export default {
   methods: {
     sendMessage(message) {
       this.$emit("sendMessage", message);
+    },
+    addPlayer(name) {
+      this.$emit("addPlayer", name);
+    }
+  },
+  mounted: function() {
+    if (localStorage.getItem("playerName") === null) {
+      $('#playerNameModal').modal('show');
     }
   }
 }

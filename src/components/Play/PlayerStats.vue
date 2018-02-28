@@ -28,7 +28,7 @@
     </div>
 
     <div class="card-footer text-muted">
-      <PlayerNameModal/>
+      <PlayerNameModal @addPlayer="addPlayer"/>
     </div>
   </div>
 </template>
@@ -51,6 +51,11 @@ const PlayerStats = {
   data() {
     return {
       playerName: "QuizlyBear88"
+    }
+  },
+  methods: {
+    addPlayer(name) {
+      this.$emit("addPlayer", name);
     }
   }
 }
