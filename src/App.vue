@@ -14,6 +14,8 @@
         <router-view 
           :players="players" 
           @addPlayer="addPlayer"
+          :chat="chat"
+          @addNewMessage="addNewMessage"
         />
       </div>
     </div>
@@ -41,6 +43,7 @@ firebase.initializeApp(config);
 var db = firebase.database();
 var playersRef = db.ref("/playerData");
 var questionsRef = db.ref("/questionBank/data");
+var chatRef = db.ref("/chat");
 
 export default {
   name: 'App',
@@ -55,6 +58,7 @@ export default {
   firebase: {
     players: playersRef,
     questionBank: questionsRef,
+    chat: chatRef
   },
   methods: {
     // Add playerName to database
@@ -62,7 +66,7 @@ export default {
       // Get firebase key for new player
       newPlayerKey = playersRef.push().key;
 
-      // Store newPlayerKey in sessionstorage
+      // Store newPlayerKey in sessionStorage
       sessionStorage.setItem("playerKey", newPlayerKey);
 
       // Create new object to post to db
@@ -72,8 +76,24 @@ export default {
         name: name,
         points: 0
       };
-
       return playersRef.update(newPlayer);
+    },
+    // Add new chat message to database
+    addNewMessage(message) {
+      // Get firebase key for new message
+      newMessageKey = chatRef.push().key;
+
+      // Get player name from session storage
+      let name = sessionStorage.getItem("playerName");
+
+      // Create new object to post to db
+      newMessage = {};
+      // Add key/value of newMessageKey
+      newMessage['/chat' + newMessageKey] = {
+        name: name,
+        message: message
+      };
+      return chatRef.update(newMessage);
     }
   }
 }
