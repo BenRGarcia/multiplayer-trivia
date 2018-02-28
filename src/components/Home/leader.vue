@@ -16,15 +16,6 @@
 export default {
   props: [
     "ranking", "playerName", "points"
-  ],
-  data() {
-    return {
-      // ...
-    }
-  }
+  ]
 }
 </script>
-
-<style scoped>
-
-</style>
