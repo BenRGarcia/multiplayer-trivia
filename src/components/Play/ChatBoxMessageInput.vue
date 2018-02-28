@@ -4,7 +4,7 @@
 
       <input 
         v-model.trim="newMessage" 
-        placeholder="input trivia taunts here" 
+        placeholder="add (undeleteable) taunts here" 
         type="text" 
         class="form-control"
       >
@@ -40,7 +40,7 @@ export default {
       // Reset message input to empty
       this.newMessage = "";
 
-     return message.length <= this.maxChars
+      return message.length <= this.maxChars
         ? this.$emit("sendMessage", message)
         : alert("Max character limit is 100 characters");
     }

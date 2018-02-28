@@ -35,13 +35,12 @@ export default {
   methods: {
     sendMessage(message) {
       this.$emit("sendMessage", message);
-    },
-    scrollToBottom() {
-      $('#chat').scrollTop( 1000 );
     }
   },
+  mounted: function() {
+    $('#chat').scrollTop( 1000 );
+  },
   updated: function () {
-    console.log(`updated was called`);
     $('#chat').scrollTop( 1000 );
   }
 }

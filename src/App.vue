@@ -85,7 +85,6 @@ export default {
 
       // Get player name from session storage
       let name = localStorage.getItem("playerName");
-      console.log(`name is: ${name}`);
 
       // Create new object to post to db
       let newMessage = {};
