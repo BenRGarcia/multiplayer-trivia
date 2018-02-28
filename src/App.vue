@@ -15,17 +15,15 @@
       </div>
     </div>
 
-    <!-- <button @click="loadPlayers">1) loadPlayers()</button> -->
-
   </div>
 </template>
 
 <script>
 import PageTitle from './components/PageTitle'
 import trivia from './assets/javascript/trivia.js'
-
-// firebase
 import firebase from 'firebase'
+
+// firebase config
 var config = {
   apiKey: "AIzaSyBrQisbyt2TLTPns6DkbvJ5pKQStVvqmDo",
   authDomain: "multiplayer-trivia.firebaseapp.com",
@@ -34,18 +32,17 @@ var config = {
   storageBucket: "multiplayer-trivia.appspot.com",
   messagingSenderId: "633175556093"
 };
+// Initialize firebase
 firebase.initializeApp(config);
-var db = firebase.database();
+// Create references to nodes for ease of use
 var playersRef = db.ref("/playerData");
 var questionsRef = db.ref("/questionBank/data");
-// end firebase
 
 export default {
   name: 'App',
   data() {
     return {
       question: {},
-      // players: []
     }
   },
   components: {
@@ -56,15 +53,24 @@ export default {
     questionBank: questionsRef,
   },
   methods: {
-    loadQuestionObj() {
-      // To load 1 question object from array in this.questionBank (or this.firebase.questionBank?)
-    }/*,
-    loadPlayers() {
-      // To load players into this.players
-      for (let player of this.playerData) {
-        this.players.push(player);
-      }
-    }*/
+    // Add playerName to database
+    addPlayer(name) {
+      // Get firebase key for new player
+      newPlayerKey = playersRef.push().key;
+
+      // Store newPlayerKey in sessionstorage
+      sessionStorage.setItem("playerKey", newPlayerKey);
+
+      // Create new object to send to db
+      newPlayer = {};
+      // Add key/value of newPlayerKey
+      newPlayer['/playerData/' + newPlayerKey] =  {
+                                                    name: name,
+                                                    points: 0
+                                                  };
+
+      return playersRef.update(...);
+    }
   }
 }
 </script>
