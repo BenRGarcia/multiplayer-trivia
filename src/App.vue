@@ -58,7 +58,6 @@ export default {
   firebase: {
     players: playersRef,
     timer: timerRef,
-    // questionBank: questionsRef,
     question: questionRef,
     chat: chatRef.limitToLast(10)
   },

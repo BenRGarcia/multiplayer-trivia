@@ -76,13 +76,16 @@ export default {
     }
   },
   methods: {
+/*  
     // Proper code:
-    // chooseAnswer(choice) {
+    
+    chooseAnswer(choice) {
+      this.$emit("chooseAnswer", choice);
+    }
+*/
+
     // hard coded, will delete:
     chooseAnswer(e) {
-      // Proper code:
-      // this.$emit("chooseAnswer", choice);
-      // hard coded, will delete:
       let event = $(e.target).text();
       this.$emit("chooseAnswer", event);
     }
