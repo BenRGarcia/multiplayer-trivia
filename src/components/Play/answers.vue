@@ -1,5 +1,6 @@
 <template>
     <button 
+      @click="chooseAnswer"
       :class="choiceClasses"
     >
       {{ choice }}
@@ -17,6 +18,12 @@ export default {
       choiceClasses: [
         "btn", "btn-secondary", "btn-lg", "btn-block"
       ]
+    }
+  },
+  methods: {
+    chooseAnswer(e) {
+      console.log(`${this.choice} was received by answers.vue`);
+      this.$emit("chooseAnswer", this.choice);
     }
   }
 }

@@ -7,6 +7,7 @@
         <TriviaQuestions
           :timer="timer"
           :question="question"
+          @chooseAnswer="chooseAnswer"
         />
 
       </div>
@@ -59,6 +60,9 @@ export default {
     },
     addPlayer(name) {
       this.$emit("addPlayer", name);
+    },
+    chooseAnswer(choice) {
+      this.$emit("chooseAnswer", choice);
     }
   },
   mounted: function() {

@@ -18,6 +18,7 @@
           :question="question"
           @addPlayer="addPlayer"
           @sendMessage="sendMessage"
+          @chooseAnswer="chooseAnswer"
         />
       </div>
     </div>
@@ -92,6 +93,10 @@ export default {
         message: message
       };
       return chatRef.update(newMessage);
+    },
+    chooseAnswer(choice) {
+      console.log(`${choice} was received by App.vue`);
+      // do stuff ...
     }
   }
 }

@@ -24,12 +24,14 @@
           v-for="(choice, index) in choices"
           :key="index"
           :choice="choice"
+          @chooseAnswer="chooseAnswer"
         />
         
-        <button type="button">key</button>
-        <button type="button">sword</button>
-        <button type="button">A scientific figure</button>
-        <button type="button">cellphone</button>
+        <!-- Hard coded dummy answers, will delete -->
+        <button type="button" @click="chooseAnswer">key</button>
+        <button type="button" @click="chooseAnswer">sword</button>
+        <button type="button" @click="chooseAnswer">A scientific figure</button>
+        <button type="button" @click="chooseAnswer">cellphone</button>
 
       </div>
     </div>
@@ -71,6 +73,18 @@ export default {
   computed: {
     choices() {
       // randomly combine 3 choices and 1 answer
+    }
+  },
+  methods: {
+    // Proper code:
+    // chooseAnswer(choice) {
+    // hard coded, will delete:
+    chooseAnswer(e) {
+      // Proper code:
+      // this.$emit("chooseAnswer", choice);
+      // hard coded, will delete:
+      let event = $(e.target).text();
+      this.$emit("chooseAnswer", event);
     }
   }
 }
