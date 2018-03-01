@@ -59,6 +59,7 @@ export default {
     }
   },
   mounted: function() {
+    // On page load, show playerName modal if name not yet created
     if (localStorage.getItem("playerName") === null) {
       return $('#playerNameModal').modal('show');
     }
