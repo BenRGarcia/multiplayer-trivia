@@ -65,11 +65,9 @@ export default {
     addPlayer(name) {
       // Get firebase key for new player
       let newPlayerKey = playersRef.push().key;
-
       // Store newPlayerKey in localStorage
       localStorage.setItem("playerKey", newPlayerKey);
       localStorage.setItem("playerName", name);
-
       // Create new object to post to db
       let newPlayer = {};
       // Add key/value of newPlayerKey
@@ -83,10 +81,8 @@ export default {
     sendMessage(message) {
       // Get firebase key for new message
       let newMessageKey = chatRef.push().key;
-
       // Get player name from session storage
       let name = localStorage.getItem("playerName");
-
       // Create new object to post to db
       let newMessage = {};
       // Add key/value of newMessageKey
