@@ -1,22 +1,28 @@
 <template>
   <div class="card text-center">
-
-    <!-- Timer -->
     <div class="card-header">
-      <TimeRemaining/>
-    </div>
 
+        <!-- Timer -->
+        <TimeRemaining
+          :timer="timer"
+        />
+
+    </div>
     <div class="card-body">
-      <!-- Trivia Question -->
       <div :class="questionClasses">
+
+        <!-- Trivia Question -->
         <Question/>
+
       </div>
       <!-- Answer Choices -->
       <div :class="choicesClasses">
+
         <button type="button" :class="choiceClasses">key</button>
         <button type="button" :class="choiceClasses">sword</button>
         <button type="button" :class="choiceClasses">A scientific figure</button>
         <button type="button" :class="choiceClasses">cellphone</button>
+
       </div>
     </div>
   </div>
@@ -27,6 +33,9 @@ import TimeRemaining from './TimeRemaining'
 import Question from './question.vue'
 
 export default {
+  props: [
+    "timer"
+  ],
   components: {
     Question,
     TimeRemaining
@@ -95,5 +104,7 @@ ex. url: https://opentdb.com/api.php?amount=10&type=multiple
 </script>
 
 <style scoped>
-
+.card-header {
+  min-height: 53px;
+}
 </style>
