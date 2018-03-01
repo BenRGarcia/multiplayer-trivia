@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <!-- Button trigger modal -->
+    <!-- Button to trigger modal, call method to autofocus -->
     <button 
       @click="autofocusModal" 
       type="button" 
@@ -61,52 +61,33 @@
 </template>
 
 <script>
-// import modal from './modal'
-
 export default {
   data() {
     return {
-      isPlayerNameChosen: false,
       playerName: ''
     }
   },
   methods: {
-    // Autofocus modal to player name input box (save the user a 'click')
+    // Focus modal to input, save the user a 'click'
     autofocusModal() {
-      $('#playerNameModal').on('shown.bs.modal', function () {
+      $('#playerNameModal').on('shown.bs.modal', () => {
         $('#player-name').trigger('focus');
       })
     },
-
     addPlayer() {
-      // Close modal
-      $('#playerNameModal').modal('hide');
-
-      // emit to parent component
-      this.$emit("addPlayer", this.playerName);
-
-      // Reset property to empty string
-      this.playerName = "";
+      let name = this.playerName;
+      // Ignore empty input
+      if (name) {
+        // Close modal after valid input
+        $('#playerNameModal').modal('hide');
+        // Reset property to empty string
+        this.playerName = "";
+        // emit new name to parent component
+        return this.$emit("addPlayer", name);
+      }
+      // If invalid input
+      return name;
     }
-
-    // addPlayer() {
-      // Close modal
-      // $('#playerNameModal').modal('hide');
-
-      // Set playerName in session storage
-      // localStorage.setItem("playerName", this.playerName);
-
-      // Reset property to empty string
-      // this.playerName = "";
-    // }
-    /*
-     * Use javascript to trigger modal if no player name selected
-     * $('#playerNameModal').modal(options)
-     */
   }
 }
 </script>
-
-<style scoped>
-  
-</style>
