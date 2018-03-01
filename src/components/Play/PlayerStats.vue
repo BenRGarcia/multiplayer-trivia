@@ -1,34 +1,39 @@
 <template>
   <div class="card">
-    <div class="card-body">
+    <div class="card-body pb-0">
       <table class="table table-sm">
+
         <thead class="thead-dark">
           <tr>
+            <!-- Player Name -->
             <th scope="col">{{ playerName }}</th>
             <th scope="col">Stats</th>
           </tr>
         </thead>
+
         <tbody>
-          <!-- <leader v-for="(leader, index) in leaderboard" :key="index" :place="leader.place", :playerName="leader.name", :points="leader.points"/> -->
-          <!-- <leader/> -->
           <tr>
             <th scope="row">Ranking</th>
-            <td>1</td>
+            <!-- Player's Ranking -->
+            <td>{{ playerRank }}</td>
           </tr>
           <tr scope="row">
-            <th>Total Points</th>
-            <td>34</td>
-          </tr>
-          <tr scope="row">
-            <th>Correct Answers</th>
-            <td>23</td>
+            <th>Points</th>
+            <!-- Player's Points -->
+            <td>{{ playerPoints }}</td>
           </tr>
         </tbody>
+
       </table>
     </div>
 
     <div class="card-footer text-muted">
-      <PlayerNameModal @addPlayer="addPlayer"/>
+
+      <!-- 'Change Player Name' Modal -->
+      <PlayerNameModal 
+        @addPlayer="addPlayer"
+      />
+
     </div>
   </div>
 </template>
@@ -36,33 +41,64 @@
 <script>
 import PlayerNameModal from './PlayerNameModal'
 
-/*
-Total Points
-Ranking
-Correct Answers
-*/
-const PlayerStats = {
+export default {
   components: {
     PlayerNameModal
   },
   props: [
-    // "playerName"
+    "players"
   ],
-  data() {
-    return {
-      playerName: "QuizlyBear88"
-    }
-  },
   methods: {
     addPlayer(name) {
       this.$emit("addPlayer", name);
     }
+  },
+  computed: {
+    playerName() {
+      // Get playerKey from local storage
+      let key = localStorage.getItem("playerKey");
+      // Iterate over "players" props array
+      for (let player of this.players) {
+        // If key matches up with a player
+        if (player['.key'] === key) { 
+          return player.name;
+        } 
+      }
+      // When no key/player match found
+      return "Create Player Name";
+    },
+    playerPoints() {
+      // Get playerKey from local storage
+      let key = localStorage.getItem("playerKey");
+      // Iterate over "players" props array
+      for (let player of this.players) {
+        // If key matches up with a player
+        if (player['.key'] === key) { 
+          return player.points
+            ? player.points
+            : "-";
+        }
+      }
+      // When no key/player match found
+      return "-";
+    },
+    playerRank() {
+      // Get playerKey from local storage
+      let key = localStorage.getItem("playerKey");
+      // Sort players from highest points to lowest points
+      let sortedArray = this.players.sort( (a,b) => b.points - a.points );
+      // Iterate over sorted array
+      for (let i = 0; i < sortedArray.length; i++) {
+        // If key matches up with a player
+        if (sortedArray[i]['.key'] === key) { 
+          return sortedArray[i].points
+                  ? i + 1
+                  : "-"
+        }
+      }
+      // When no key/player match found
+      return "-";
+    }
   }
 }
-
-export default PlayerStats;
 </script>
-
-<style scoped>
-
-</style>
