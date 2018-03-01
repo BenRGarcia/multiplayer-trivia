@@ -1,24 +1,33 @@
 <template>
   <div>
-
-    <!-- Bootstrap Card that contains Timer + Question + Answer Choices -->
     <div class="row">
       <div class="col">
-        <TriviaQuestions/>
-      </div>
-    </div>
-    
-    <div class="row">
-      <!-- Stats -->
-      <div class="col-12 col-md-5 mb-3">
-        <PlayerStats @addPlayer="addPlayer"/>
-      </div>
-      <!-- Chat -->
-      <div class="col-12 col-md-7 mb-3">
-        <ChatBox @sendMessage="sendMessage" :chat="chat"/>
-      </div>
-    </div>
 
+        <!-- Bootstrap Card that contains Timer + Question + Answer Choices -->
+        <TriviaQuestions/>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-5 mb-3">
+
+        <!-- Stats -->
+        <PlayerStats 
+          :players="players" 
+          @addPlayer="addPlayer"
+        />
+
+      </div>
+      <div class="col-12 col-md-7 mb-3">
+
+        <!-- Chat -->
+        <ChatBox 
+          @sendMessage="sendMessage" 
+          :chat="chat"
+        />
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -31,7 +40,7 @@ import PlayerNameModal from './PlayerNameModal'
 
 export default {
   props: [
-    "timeRemaining", "question", 
+    "players", "timeRemaining", "question", 
     "choices", "chat"
   ],
   components: {
@@ -51,7 +60,7 @@ export default {
   },
   mounted: function() {
     if (localStorage.getItem("playerName") === null) {
-      $('#playerNameModal').modal('show');
+      return $('#playerNameModal').modal('show');
     }
   }
 }
