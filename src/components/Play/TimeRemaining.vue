@@ -1,23 +1,16 @@
 <template>
   <section>
-
-    <h4 class="timeRemaining">
-      Time Remaining: {{ timeRemaining }}
+    <h4 v-for="time in timer" class="timeRemaining">
+      Time Remaining: {{ time.remaining }}
     </h4>
-
   </section>
 </template>
 
 <script>
 export default {
   props: [
-    // "timeRemaining"
-  ],
-  data() {
-    return {
-      timeRemaining: "15"
-    }
-  }
+    "timer"
+  ]
 }
 </script>
 
