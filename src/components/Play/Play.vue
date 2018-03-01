@@ -6,6 +6,7 @@
         <!-- Bootstrap Card that contains Timer + Question + Answer Choices -->
         <TriviaQuestions
           :timer="timer"
+          :question="question"
         />
 
       </div>

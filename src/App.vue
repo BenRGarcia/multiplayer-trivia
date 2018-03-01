@@ -13,10 +13,11 @@
       <div class="col">
         <router-view 
           :players="players" 
-          @addPlayer="addPlayer"
           :chat="chat"
-          @sendMessage="sendMessage"
           :timer="timer"
+          :question="question"
+          @addPlayer="addPlayer"
+          @sendMessage="sendMessage"
         />
       </div>
     </div>
@@ -43,9 +44,10 @@ firebase.initializeApp(config);
 // Create references to nodes for ease of use
 var db = firebase.database();
 var playersRef = db.ref("/playerData");
-var questionsRef = db.ref("/questionBank/data");
+// var questionsRef = db.ref("/questionBank/data");
 var chatRef = db.ref("/chat");
 var timerRef = db.ref("/timer");
+var questionRef = db.ref("/question");
 
 export default {
   name: 'App',
@@ -55,7 +57,8 @@ export default {
   firebase: {
     players: playersRef,
     timer: timerRef,
-    questionBank: questionsRef,
+    // questionBank: questionsRef,
+    question: questionRef,
     chat: chatRef.limitToLast(10)
   },
   methods: {

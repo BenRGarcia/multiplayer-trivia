@@ -12,16 +12,24 @@
       <div :class="questionClasses">
 
         <!-- Trivia Question -->
-        <Question/>
+        <Question
+          :question="question"
+        />
 
       </div>
-      <!-- Answer Choices -->
       <div :class="choicesClasses">
 
-        <button type="button" :class="choiceClasses">key</button>
-        <button type="button" :class="choiceClasses">sword</button>
-        <button type="button" :class="choiceClasses">A scientific figure</button>
-        <button type="button" :class="choiceClasses">cellphone</button>
+        <!-- Answer Choices -->
+        <Choices
+          v-for="(choice, index) in choices"
+          :key="index"
+          :choice="choice"
+        />
+        
+        <button type="button">key</button>
+        <button type="button">sword</button>
+        <button type="button">A scientific figure</button>
+        <button type="button">cellphone</button>
 
       </div>
     </div>
@@ -30,15 +38,17 @@
 
 <script>
 import TimeRemaining from './TimeRemaining'
-import Question from './question.vue'
+import Question from './question'
+import Choices from './answers'
 
 export default {
   props: [
-    "timer"
+    "timer", "question"
   ],
   components: {
     Question,
-    TimeRemaining
+    TimeRemaining,
+    Choices
   },
   data() {
     return {
@@ -46,21 +56,21 @@ export default {
       questionClasses: [
         "card-title",
         "col-12", 
-        "col-md-10", "offset-md-1"/*, 
-        "col-md-8", "offset-md-2"*/
+        "col-md-10", "offset-md-1"
       ],
       // CSS classes for section of answer choices
       choicesClasses: [
         "card-text", 
-        "col-12", 
-        "col-sm-10", "offset-sm-1", 
-        "col-md-6", "offset-md-3", 
-        "col-lg-4", "offset-lg-4",
-      ],
-      // CSS classes for each answer choice
-      choiceClasses: [
-        "btn", "btn-secondary", "btn-lg", "btn-block"
+        "col-12",                   // for xs screens
+        "col-sm-10", "offset-sm-1", // for sm screens
+        "col-md-6", "offset-md-3",  // for md screens
+        "col-lg-4", "offset-lg-4",  // for lg screens
       ]
+    }
+  },
+  computed: {
+    choices() {
+      // randomly combine 3 choices and 1 answer
     }
   }
 }
@@ -83,23 +93,10 @@ ex. url: https://opentdb.com/api.php?amount=10&type=multiple
         "White Hart",
         "King&#039;s Head"
       ]
-    },
-    
-    { // index 1
-      "category": "General Knowledge",
-      "type": "multiple",
-      "difficulty": "hard",
-      "question": "What year was Queen Elizabeth II born?",
-      "correct_answer": "1926",
-      "incorrect_answers": [
-        "1923",
-        "1929",
-        "1930"
-      ]
     }
-    // index ...
+
+    // ...
   ]
-}
 */
 </script>
 
