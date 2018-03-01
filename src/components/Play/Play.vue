@@ -4,7 +4,9 @@
       <div class="col">
 
         <!-- Bootstrap Card that contains Timer + Question + Answer Choices -->
-        <TriviaQuestions/>
+        <TriviaQuestions
+          :timer="timer"
+        />
 
       </div>
     </div>
@@ -40,7 +42,7 @@ import PlayerNameModal from './PlayerNameModal'
 
 export default {
   props: [
-    "players", "timeRemaining", "question", 
+    "players", "timer", "question", 
     "choices", "chat"
   ],
   components: {
