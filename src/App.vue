@@ -16,6 +16,7 @@
           @addPlayer="addPlayer"
           :chat="chat"
           @sendMessage="sendMessage"
+          :timer="timer"
         />
       </div>
     </div>
@@ -44,19 +45,16 @@ var db = firebase.database();
 var playersRef = db.ref("/playerData");
 var questionsRef = db.ref("/questionBank/data");
 var chatRef = db.ref("/chat");
+var timerRef = db.ref("/timer");
 
 export default {
   name: 'App',
-  data() {
-    return {
-      question: {},
-    }
-  },
   components: {
     PageTitle
   },
   firebase: {
     players: playersRef,
+    timer: timerRef,
     questionBank: questionsRef,
     chat: chatRef.limitToLast(10)
   },
