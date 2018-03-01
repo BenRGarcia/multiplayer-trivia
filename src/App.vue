@@ -69,7 +69,6 @@ export default {
       let newPlayerKey = playersRef.push().key;
       // Store newPlayerKey in localStorage
       localStorage.setItem("playerKey", newPlayerKey);
-      localStorage.setItem("playerName", name);
       // Create new object to post to db
       let newPlayer = {};
       // Add key/value of newPlayerKey
