@@ -3,7 +3,7 @@
     <div class="card-header">
       <h2 class="mb-0">Trivia Data</h2>
     </div>
-    <div class="card-body">
+    <div class="card-body pb-1">
       <p class="card-text">
         Seconds Remaining: 
         <span v-for="time in timer">{{ time.remaining }}</span>
