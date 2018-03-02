@@ -4,7 +4,7 @@
 
       <input 
         v-model.trim="newMessage" 
-        placeholder="add (undeleteable) taunts here" 
+        placeholder="(kindly) taunt opponents here" 
         type="text" 
         class="form-control"
       >
