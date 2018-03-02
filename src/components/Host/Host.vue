@@ -12,7 +12,6 @@
 
       <!-- Component to Set the default timer amount -->
       <SetTimerAmount
-        :timer="timer"
         :trivia="trivia"
         @setTimer="setTimer"
       />
@@ -23,6 +22,7 @@
       <!-- Component to show player data -->
       <TriviaData
         :players="players"
+        :timer="timer"
       />
 
     </div>
