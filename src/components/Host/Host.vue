@@ -70,8 +70,8 @@ export default {
       postQuestion() {
         this.$emit("postQuestion");
       },
-      setTimer() {
-        this.$emit("setTimer");
+      setTimer(seconds) {
+        this.$emit("setTimer", seconds);
       },
       deletePlayers() {
         this.$emit("deletePlayers");
