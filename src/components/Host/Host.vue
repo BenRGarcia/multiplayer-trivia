@@ -4,6 +4,7 @@
 
       <!-- Component to Post a new trivia question -->
       <PostQuestion
+        :questionBank="questionBank"
         @postQuestion="postQuestion"
       />
 
@@ -47,7 +48,7 @@ import AdminDangerZone from './AdminDangerZone'
 
 export default {
   props: [
-  "timer", "players", "trivia"
+  "timer", "players", "trivia", "questionBank"
   ],
   data() {
     return {
@@ -68,7 +69,7 @@ export default {
   },
   methods: {
     postQuestion(number) {
-      console.log(`Question number: ${number}`);
+      console.log(`Question number index (number - 1): ${number}`);
       this.$emit("postQuestion", number);
     },
     setTimer(seconds) {
