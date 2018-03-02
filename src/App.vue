@@ -15,7 +15,7 @@
           :players="players" 
           :chat="chat"
           :timer="timer"
-          :question="question"
+          :questionBank="questionBank"
           @addPlayer="addPlayer"
           @sendMessage="sendMessage"
           @chooseAnswer="chooseAnswer"
@@ -49,7 +49,7 @@ var db = firebase.database();
 var playersRef = db.ref("/playerData");
 var chatRef = db.ref("/chat");
 var timerRef = db.ref("/timer");
-var questionRef = db.ref("/question");
+var questionBankRef = db.ref("/questionBank");
 var testRef = db.ref("/Test");
 
 export default {
@@ -60,7 +60,7 @@ export default {
   firebase: {
     players: playersRef,
     timer: timerRef,
-    question: questionRef,
+    questionBank: questionBankRef,
     chat: chatRef.limitToLast(10)
   },
   methods: {
