@@ -1,41 +1,80 @@
 <template>
   <div>
-    <div class="card-header"><h2 class="mb-0">Admin Danger Zone</h2></div>
-    <h5 class="card-title mb-1">With great power comes great responsibility</h5>
-    <h6 class="card-title mb-0">These buttons do what they say... be careful</h6>
-    <div class="card-body pb-0">
+    <div class="card-header pt-1 pb-1">
+      <h2 class="mb-0">
+        Admin Danger Zone
+      </h2>
+    </div>
+    <h5 class="card-title mb-1">
+      With great power comes great responsibility
+    </h5>
+    <h6 class="card-title mb-1">
+      These buttons do what they say... be careful
+    </h6>
+    <div class="card-body pb-1 pt-1">
+      <p class="mb-1">
+        <button class="btn btn-outline-danger" type="button" data-toggle="collapse" data-target="#admin">
+          Toggle | Admin Functions
+        </button>
+      </p>
+      <div class="collapse" id="admin">
+        <div class="row">
+          <div :class="cardClasses">
+            <div class="card-header">
+              Delete all players in the database
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
 
-      <div class="row">
-        <div :class="cardClasses">
-          <div class="card-header">
-            Delete all players in the database
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><button @click="" class="btn btn-danger">Delete All Players</button></li>
-          </ul>
-        </div>
-      </div>
+                <!-- Delete All Players -->
+                <button 
+                  @click="deletePlayers" 
+                  :class="btnClasses"
+                >Delete All Players
+                </button>
 
-      <div class="row">
-        <div :class="cardClasses">
-          <div class="card-header">
-            Reset all player scores to 0
+              </li>
+            </ul>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><button @click="" class="btn btn-danger">Reset All Scores</button></li>
-          </ul>
         </div>
-      </div>
+        <div class="row">
+          <div :class="cardClasses">
+            <div class="card-header">
+              Reset all player scores to 0
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
 
-      <div class="row">
-        <div :class="cardClasses">
-          <div class="card-header">
-            Completely delete all chat history
+                <!-- Reset All Scores to 0 -->
+                <button 
+                  @click="resetScores" 
+                  :class="btnClasses"
+                >Reset All Scores
+                </button>
+
+              </li>
+            </ul>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><button @click="" class="btn btn-danger">Clear Chat History</button></li>
-          </ul>
         </div>
+        <div class="row">
+          <div :class="cardClasses">
+            <div class="card-header">
+              Completely delete all chat history
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+
+                <!-- Clear Chat History -->
+                <button 
+                  @click="clearChat" 
+                  :class="btnClasses"
+                >Clear Chat History
+                </button>
+
+              </li>
+            </ul>
+          </div>
+        </div>        
       </div>
     </div>
   </div>
@@ -45,18 +84,33 @@
 export default {
   data() {
     return {
+      // CSS Classes for bootstrap cards
       cardClasses: [
         "col-12",                   // xs sized screens
         "col-sm-10", "offset-sm-1", // sm sized screens
         "col-md-6", "offset-md-3",  // >= md sized screens
         "card", 
         "pl-0", "pr-0", "mb-2"
-      ]
+        ],
+        btnClasses: [
+        "btn", "btn-danger"
+        ]
+      }
+    },
+    methods: {
+      deletePlayers() {
+        this.$emit("deletePlayers");
+      },
+      resetScores() {
+        this.$emit("resetScores");
+      },
+      clearChat() {
+        this.$emit("clearChat");
+      }
     }
   }
-}
-</script>
+  </script>
 
-<style scoped>
+  <style scoped>
 
-</style>
+  </style>
