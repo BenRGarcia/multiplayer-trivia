@@ -14,7 +14,7 @@
       <form @submit.prevent="setTimer">
         <div class="form-group row">
           <label for="setTimer" class="text-right col-6 mb-0 pt-2">Seconds:</label>
-          <input v-model="seconds" type="number" class="form-control col-4 col-sm-5 col-md-4" placeholder="ex. 30">
+          <input v-model="seconds" type="number" class="form-control col-4 col-sm-5 col-md-4 col-lg-3" placeholder="ex. 30">
         </div>
       </form>
       <button @click="setTimer" class="btn btn-primary">Set Timer Seconds</button>
