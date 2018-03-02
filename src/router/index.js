@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from '@/components/Home/Home'
 import Play from '@/components/Play/Play'
+import Host from '@/components/Host/Host'
 
 Vue.use(Router)
 
@@ -22,6 +23,12 @@ export default new Router({
       path: '/play',
       name: 'Play',
       component: Play,
+      props: true
+    },
+    { // Host page
+      path: '/host',
+      name: 'Host',
+      component: Host,
       props: true
     }
   ]
