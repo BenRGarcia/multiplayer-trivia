@@ -31,7 +31,7 @@
 
               </span>
             </div>
-            <input v-model="questionNumber" type="number" class="text-center form-control">
+            <input v-model="questionNumber" type="number" class="text-center form-control" readonly>
             <div class="input-group-append">
               <span class="input-group-text p-0">
 
@@ -44,10 +44,6 @@
               </span>
             </div>
           </div>
-
-          <div class="col-12">
-            <small class="form-text text-muted mt-0">(1-100)</small>
-          </div>  
         </div>
       </form>
 
@@ -64,9 +60,12 @@
 
 <script>
 export default {
+  props: [
+    "questionBank"
+  ],
   data() {
     return {
-      questionNumber: 1
+      questionNumber: 2
     }
   },
   methods: {
@@ -83,18 +82,14 @@ export default {
   },
   watch: {
     questionNumber: function() {
-      // Tolerate empty input state
-      if (this.questionNumber || this.questionNumber === 0) {
-        // Decrement to 1 changes to 100
-        if (this.questionNumber < 1) {
-          this.questionNumber = 100;
-        } 
-        // Increment to 100 change to 1
-        else if (this.questionNumber > 100) {
-          this.questionNumber = 1;
-        }
+      // How many questions are in the question bank?
+      let qCount = this.questionBank[0][".value"].length;
+      // decrement to 1 = qCount, increment to qCount = 1
+      if (this.questionNumber < 1) {
+        return this.questionNumber = qCount;
+      } else if (this.questionNumber > qCount) {
+        return this.questionNumber = 1;
       }
-      return this.questionNumber;
     }
   }
 }
