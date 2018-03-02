@@ -19,6 +19,8 @@
           @addPlayer="addPlayer"
           @sendMessage="sendMessage"
           @chooseAnswer="chooseAnswer"
+          @deletePlayers="deletePlayers"
+          @clearChat="clearChat"
         />
       </div>
     </div>
@@ -45,10 +47,10 @@ firebase.initializeApp(config);
 // Create references to nodes for ease of use
 var db = firebase.database();
 var playersRef = db.ref("/playerData");
-// var questionsRef = db.ref("/questionBank/data");
 var chatRef = db.ref("/chat");
 var timerRef = db.ref("/timer");
 var questionRef = db.ref("/question");
+var testRef = db.ref("/Test");
 
 export default {
   name: 'App',
@@ -62,18 +64,27 @@ export default {
     chat: chatRef.limitToLast(10)
   },
   methods: {
-    // Add playerName to database
+    // Add playerName to database, or change name if key exists
     addPlayer(name) {
-      // Get firebase key for new player
-      let newPlayerKey = playersRef.push().key;
-      // Store newPlayerKey in localStorage
-      localStorage.setItem("playerKey", newPlayerKey);
+      // playerKey already exists, or get a new one
+      let playerKey = localStorage.getItem("playerKey") || playersRef.push().key;
+      let points;
+
+      // Existing players keep current points
+      for (let player of this.players) {
+        if (playerKey === player[".key"]) {
+          points = player.points;
+        }
+      }
+
+      // In case playerKey was not present, send to localStorage
+      localStorage.setItem("playerKey", playerKey);
       // Create new object to post to db
       let newPlayer = {};
       // Add key/value of newPlayerKey
-      newPlayer[newPlayerKey] = {
+      newPlayer[playerKey] = {
         name: name,
-        points: 0
+        points: points || 0
       };
       return playersRef.update(newPlayer);
     },
@@ -81,8 +92,16 @@ export default {
     sendMessage(message) {
       // Get firebase key for new message
       let newMessageKey = chatRef.push().key;
-      // Get player name from session storage
-      let name = localStorage.getItem("playerName");
+      // Get playerKey from session storage
+      let playerKey = localStorage.getItem("playerKey");
+      // Lookup player name
+      let name;
+
+      for (let player of this.players) {
+        if (playerKey === player[".key"]) {
+          name = player.name;
+        }
+      }
       // Create new object to post to db
       let newMessage = {};
       // Add key/value of newMessageKey
@@ -95,6 +114,15 @@ export default {
     chooseAnswer(choice) {
       console.log(`${choice} was received by App.vue`);
       // do stuff ...
+    },
+    deletePlayers() {
+      return playersRef.set({});
+    },
+    resetScores() {
+      
+    },
+    clearChat() {
+      return chatRef.set({});
     }
   }
 }
