@@ -58,32 +58,33 @@ export default {
         "card", "border-danger", 
         "mt-3", "pl-0", "pr-0"
         ]
-      }
+    }
+  },
+  components: {
+    PostQuestion,
+    SetTimerAmount,
+    TriviaData,
+    AdminDangerZone
+  },
+  methods: {
+    postQuestion(number) {
+      console.log(`Question number: ${number}`);
+      this.$emit("postQuestion", number);
     },
-    components: {
-      PostQuestion,
-      SetTimerAmount,
-      TriviaData,
-      AdminDangerZone
+    setTimer(seconds) {
+      this.$emit("setTimer", seconds);
     },
-    methods: {
-      postQuestion() {
-        this.$emit("postQuestion");
-      },
-      setTimer(seconds) {
-        this.$emit("setTimer", seconds);
-      },
-      deletePlayers() {
-        this.$emit("deletePlayers");
-      },
-      resetScores() {
-        this.$emit("resetScores");
-      },
-      clearChat() {
-        this.$emit("clearChat");
-      }
+    deletePlayers() {
+      this.$emit("deletePlayers");
+    },
+    resetScores() {
+      this.$emit("resetScores");
+    },
+    clearChat() {
+      this.$emit("clearChat");
     }
   }
+}
 </script>
 
 <style scoped>
