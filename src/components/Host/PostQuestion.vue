@@ -70,7 +70,6 @@ export default {
   },
   methods: {
     postQuestion() {
-      console.log(`postQuestion was called`);
       return this.$emit("postQuestion", this.questionNumber - 1);
     },
     incrementQuestion() {
