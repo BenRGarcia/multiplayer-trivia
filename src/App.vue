@@ -20,6 +20,7 @@
           @sendMessage="sendMessage"
           @chooseAnswer="chooseAnswer"
           @deletePlayers="deletePlayers"
+          @resetScores="resetScores"
           @clearChat="clearChat"
         />
       </div>
@@ -119,7 +120,21 @@ export default {
       return playersRef.set({});
     },
     resetScores() {
-      
+      // Iterate over players
+      for (let player of this.players) {
+        // Find player names and keys
+        let key = player[".key"];
+        let name = player.name;
+
+        // create new player objects with 0 points
+        let zeroPoints = {};
+        zeroPoints[key] = {
+          name: name,
+          points: 0
+        }
+        // Push updates to db
+        playersRef.update(zeroPoints);
+      }
     },
     clearChat() {
       return chatRef.set({});
