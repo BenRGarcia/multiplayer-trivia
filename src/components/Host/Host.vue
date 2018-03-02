@@ -68,9 +68,9 @@ export default {
     AdminDangerZone
   },
   methods: {
-    postQuestion(number) {
-      console.log(`Question number index (number - 1): ${number}`);
-      this.$emit("postQuestion", number);
+    postQuestion(index) {
+      console.log(`Question number index: ${index}`);
+      this.$emit("postQuestion", index);
     },
     setTimer(seconds) {
       this.$emit("setTimer", seconds);
