@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-md-6 mb-2">
 
       <!-- Component to Post a new trivia question -->
       <PostQuestion
@@ -8,16 +8,17 @@
       />
 
     </div>
-    <div class="col-sm-6">
+    <div class="col-md-6">
 
       <!-- Component to Set the default timer amount -->
       <SetTimerAmount
         :timer="timer"
+        :trivia="trivia"
         @setTimer="setTimer"
       />
 
     </div>
-    <div :class="cardClasses">
+    <div id="data" :class="cardClasses">
 
       <!-- Component to show player data -->
       <TriviaData
@@ -46,7 +47,7 @@ import AdminDangerZone from './AdminDangerZone'
 
 export default {
   props: [
-  "timer", "players"
+  "timer", "players", "trivia"
   ],
   data() {
     return {
@@ -84,3 +85,9 @@ export default {
     }
   }
 </script>
+
+<style scoped>
+#data {
+  border-color: green !important;
+}
+</style>
