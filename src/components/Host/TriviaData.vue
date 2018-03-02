@@ -5,7 +5,8 @@
     </div>
     <div class="card-body">
       <p class="card-text">
-        Seconds Remaining: 30{{  }}
+        Seconds Remaining: 
+        <span v-for="time in timer">{{ time.remaining }}</span>
       </p>
       <p>
         <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -23,7 +24,9 @@
 
 <script>
 export default {
-
+  props: [
+    "timer"
+  ]
 }
 </script>
 
