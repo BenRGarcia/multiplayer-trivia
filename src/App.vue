@@ -16,12 +16,15 @@
           :chat="chat"
           :timer="timer"
           :questionBank="questionBank"
+          :trivia="trivia"
           @addPlayer="addPlayer"
           @sendMessage="sendMessage"
           @chooseAnswer="chooseAnswer"
           @deletePlayers="deletePlayers"
           @resetScores="resetScores"
           @clearChat="clearChat"
+          @postQuestion="postQuestion"
+          @setTimer="setTimer"
         />
       </div>
     </div>
@@ -51,18 +54,24 @@ var playersRef = db.ref("/playerData");
 var chatRef = db.ref("/chat");
 var timerRef = db.ref("/timer");
 var questionBankRef = db.ref("/questionBank");
-var testRef = db.ref("/Test");
+var triviaRef = db.ref("/trivia");
 
 export default {
   name: 'App',
   components: {
     PageTitle
   },
+  data() {
+    return {
+      intervalId: null
+    }
+  },
   firebase: {
     players: playersRef,
     timer: timerRef,
     questionBank: questionBankRef,
-    chat: chatRef.limitToLast(10)
+    chat: chatRef.limitToLast(10),
+    trivia: triviaRef
   },
   methods: {
     // Add playerName to database, or change name if key exists
@@ -138,6 +147,46 @@ export default {
     },
     clearChat() {
       return chatRef.set({});
+    },
+    postQuestion(index) {
+      // Retrieve question object at the passed index
+      let question = this.questionBank[0][".value"][index];
+      console.log(question);
+      // udpate db with question object
+      return triviaRef.set({
+        question: question
+      });
+    },
+    startTimer() {
+      // Load initial seconds count
+      let initial = timerRef.child('initial');
+      console.log(`startTimer says initial is ${initial} seconds`);
+      // Set initial count as remaining count
+      timerRef.child('remaining').update({
+        seconds: initial
+      });
+      this.intervalId = setInterval( decrementTimer ,1000);
+    },
+    decrementTimer() {
+      let seconds = this.timer.remaining;
+      console.log(`${seconds} seconds remaining`);
+      seconds--;
+      // Decrement remaining seconds
+      timerRef.child('remaining').update({
+        seconds: seconds
+      })
+      // If time has run out
+      if (seconds <= 0) {
+        clearInterval(intervalId)
+        console.log(`Time is up!`);
+      }
+    },
+    setTimer(seconds) {
+      console.log(`${seconds} received by setTimer in App.vue`);
+
+      /*return timerRef.child('initial').update({
+        seconds: seconds
+      });*/
     }
   }
 }

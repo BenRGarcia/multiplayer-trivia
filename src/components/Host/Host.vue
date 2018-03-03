@@ -69,7 +69,6 @@ export default {
   },
   methods: {
     postQuestion(index) {
-      console.log(`Question number index: ${index}`);
       this.$emit("postQuestion", index);
     },
     setTimer(seconds) {

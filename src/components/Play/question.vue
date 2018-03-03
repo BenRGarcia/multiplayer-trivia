@@ -1,8 +1,5 @@
 <template>
-  <h2 class="mb-4">
-    The word 'shampoo' originates from the languages of which country?
-    <!-- {{ question }} -->
-  </h2>
+  <h2 class="mb-4" v-html="question"></h2>
 </template>
 
 <script>

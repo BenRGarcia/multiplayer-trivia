@@ -6,7 +6,7 @@
         <!-- Bootstrap Card that contains Timer + Question + Answer Choices -->
         <TriviaQuestions
           :timer="timer"
-          :question="question"
+          :trivia="trivia"
           @chooseAnswer="chooseAnswer"
         />
 
@@ -44,8 +44,8 @@ import PlayerNameModal from './PlayerNameModal'
 
 export default {
   props: [
-    "players", "timer", "question", 
-    "choices", "chat"
+    "players", "timer", 
+    "trivia", "chat"
   ],
   components: {
     TimeRemaining,

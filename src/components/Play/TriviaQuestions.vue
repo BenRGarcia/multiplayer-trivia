@@ -13,25 +13,54 @@
 
         <!-- Trivia Question -->
         <Question
-          :question="question"
+          v-for="(item, index) in trivia"
+          :key="index"
+          :question="item.question"
         />
 
       </div>
       <div :class="choicesClasses">
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <!-- Answer Choices -->
+        <!-- <Choices
+          v-for="(item, index) in trivia[0].incorrect_answers"
+          :key="index"
+          :choice="item"
+          @chooseAnswer="chooseAnswer"
+        /> -->
         <Choices
           v-for="(choice, index) in choices"
           :key="index"
           :choice="choice"
           @chooseAnswer="chooseAnswer"
         />
-        
-        <!-- Hard coded dummy answers, will delete -->
-        <button type="button" @click="chooseAnswer">key</button>
-        <button type="button" @click="chooseAnswer">sword</button>
-        <button type="button" @click="chooseAnswer">A scientific figure</button>
-        <button type="button" @click="chooseAnswer">cellphone</button>
+
+
+
+
+
+
+
+
+
+
 
       </div>
     </div>
@@ -41,11 +70,11 @@
 <script>
 import TimeRemaining from './TimeRemaining'
 import Question from './question'
-import Choices from './answers'
+import Choices from './choices'
 
 export default {
   props: [
-    "timer", "question"
+    "timer", "trivia"
   ],
   components: {
     Question,
@@ -71,8 +100,24 @@ export default {
     }
   },
   computed: {
+    /*question() {
+      return this.trivia[0].question;
+    },*/
     choices() {
-      // randomly combine 3 choices and 1 answer
+      let allChoices = [];
+      let wrongChoices = this.trivia[0].incorrect_answers;
+      let rightAnswer = this.trivia[0].correct_answer;
+      console.log(`Right answer is: ${rightAnswer}`);
+      let qtyChoices = wrongChoices.length + 1;
+      // add wrong answers to new array
+      for (let choice of wrongChoices) {
+        allChoices.push(choice);
+      }
+      // insert right answer randomly
+      let randomIndex = Math.floor(Math.random() * qtyChoices);
+      allChoices.splice(randomIndex, 0, rightAnswer);
+      // return allChoices;
+      return [1, 2, 3, 4]
     }
   },
   methods: {
@@ -94,26 +139,6 @@ export default {
 /*
 API Source: https://opentdb.com/api_config.php
 ex. url: https://opentdb.com/api.php?amount=10&type=multiple
-
-{
-  "response_code": 0,
-  "results": [
-    
-    { // index 0
-      "category": "General Knowledge",
-      "type": "multiple",
-      "difficulty": "medium",
-      "question": "According to the BBPA, what is the most common pub name in the UK?",
-      "correct_answer": "Red Lion",
-      "incorrect_answers": [
-        "Royal Oak",
-        "White Hart",
-        "King&#039;s Head"
-      ]
-    }
-
-    // ...
-  ]
 */
 </script>
 
