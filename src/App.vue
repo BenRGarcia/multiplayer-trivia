@@ -39,12 +39,12 @@ import firebase from 'firebase'
 
 // firebase config
 var config = {
-  apiKey: "AIzaSyBrQisbyt2TLTPns6DkbvJ5pKQStVvqmDo",
-  authDomain: "multiplayer-trivia.firebaseapp.com",
-  databaseURL: "https://multiplayer-trivia.firebaseio.com",
-  projectId: "multiplayer-trivia",
-  storageBucket: "multiplayer-trivia.appspot.com",
-  messagingSenderId: "633175556093"
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
 };
 // Initialize firebase
 firebase.initializeApp(config);
